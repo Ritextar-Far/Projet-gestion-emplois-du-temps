@@ -29,7 +29,7 @@ L'application permet à l'équipe administrative de centraliser et faciliter la 
 1. Cloner le dépôt :
 
    ```bash
-   git clone [<url-du-depot>](https://github.com/Ritextar-Far/Projet-gestion-emplois-du-temps)
+   git clone https://github.com/Ritextar-Far/Projet-gestion-emplois-du-temps
    ```
 
 2. Placer le dossier `gestion-licence/` dans le répertoire de votre serveur local (ex : `htdocs/` pour XAMPP).
