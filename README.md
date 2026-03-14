@@ -94,7 +94,7 @@ gestion-licence/
 ### Organisation du code
 
 - **`pages/`** — Chaque page de l'application correspond à un fichier PHP unique.
-- **`Inclus/`** — Contient les éléments réutilisables inclus dans les pages (header, footer, vérification d'authentification).
+- **`inclus/`** — Contient les éléments réutilisables inclus dans les pages (header, footer, vérification d'authentification).
 - **`functions/`** — Contient les fonctions d'accès à la base de données, regroupées par thème.
 - **`assets/`** — Contient les fichiers statiques (CSS, JS, images).
 
