@@ -63,7 +63,7 @@ gestion-licence/
 │   ├── types.php
 │   └── type_fiche.php
 │
-├── Inclus/                    ← Morceaux réutilisables
+├── inclus/                    ← Morceaux réutilisables
 │   ├── header.php               ← <head> + navbar
 │   ├── footer.php
 │   └── auth_check.php           ← Vérifie si connecté (inclus en haut de chaque page)
