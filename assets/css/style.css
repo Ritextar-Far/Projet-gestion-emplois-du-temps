@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
 }
 
 .page{
@@ -108,3 +108,71 @@ body {
 .bouton-connexion:hover{
     background:#2e3f64;
 }
+
+
+.corps-enseignant .fil-dariane {
+
+display: flex;
+align-items: flex-start;
+padding: 15px 0px 15px 0px;
+gap: 20px;
+border: 1px solid #e6e8ec;
+margin-bottom: 30px;
+font-family: 'Poppins', sans-serif;
+color: #1F384C;
+}
+
+
+
+.corps-enseignant h1 {
+font-size: 26px;
+font-weight: 500;
+color: #1b2e53;
+font-family:'Poppins', sans-serif;
+}
+
+.corps-enseignant .contenu {
+    display: block ;
+    padding: 0px 80px;
+    font-family: 'Poppins', sans-serif;
+    color: #1F384C;
+}
+
+.corps-enseignant .contenu h1 {
+    font-size: 26px;
+    font-weight: 500;
+    color: #1b2e53;
+    font-family:'Poppins', sans-serif;
+    position : left ;
+}
+
+.corps-enseignant .contenu h2 {
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: #2C416E;
+    padding: 0 20px;
+    height: 44px;
+    width: 219px;
+    margin: 14px 20px;
+    cursor: pointer;
+    border: none;
+    white-space: nowrap;
+}
+
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+
+
