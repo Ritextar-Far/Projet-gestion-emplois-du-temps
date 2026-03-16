@@ -71,7 +71,7 @@ gestion-licence/
 |       ├── config.php                                  ← Paramètres de connexion à la base de données (hôte, nom, utilisateur, mot de passe)
 |
 │   ├── database/                               ← requête php stocké ici
-|         ├── requeteconnexion.php              ← <head> + navbar
+|         ├── requeteconnexion.php              
 │         ├── ...
 |
 │
