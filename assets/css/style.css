@@ -4,97 +4,102 @@
     box-sizing:border-box;
 }
 
+/* ===================================================== */
+/* =================== PAGE CONNEXION ===================== */
+/* ===================================================== */
+
+
 body {
     font-family: 'Inter';
 }
 
-.page{
+.pageconnexion .page{
     display:flex;
     min-height:100vh;
 }
 
-.barre-gauche{
+.pageconnexion .barre-gauche{
     display: flex;
     width:250px;
     background:#e6e8ec;
     padding:20px;
 }
 
-.barre-gauche img {
+.pageconnexion .barre-gauche img {
     width: 30px;
     height: 35px;
     object-fit: contain;
 }
 
-.barre-gauche .sous-titre {
+.pageconnexion .barre-gauche .sous-titre {
     font-size: 12px;
     font-weight: bold;
 }
 
-.gros-text{
+.pageconnexion .gros-text{
     font-size: 17px;
     font-weight: bold;
     color: #1b2e53;
 }
 
-.text-logo{
+.pageconnexion .text-logo{
     display: block;
     padding-left: 4px;
     margin-top: 10px;
     color: #2c416e;
 }
 
-.logo{
+.pageconnexion .logo{
     width: 25px;
     height: 25px;
     margin-top: 10px;
     margin-right: 5px;
 }
 
-.contenu{
+.pageconnexion .contenu{
     padding:60px 80px;
 }
 
-.titre-principal{
+.pageconnexion .titre-principal{
     font-size:28px;
     font-weight:700;
     margin-bottom:40px;
 }
 
-.bloc-connexion{
+.pageconnexion .bloc-connexion{
     max-width:500px;
 }
 
-.titre-connexion{
+.pageconnexion .titre-connexion{
     font-size:20px;
     color:#2c416e;
     margin-bottom:20px;
 }
 
-.formulaire-connexion{
+.pageconnexion .formulaire-connexion{
     display:flex;
     flex-direction:column;
 }
 
-.champ{
+.pageconnexion .champ{
     display:flex;
     flex-direction:column;
     margin-bottom:20px;
 }
 
-.champ label{
+.pageconnexion .champ label{
     font-size:14px;
     margin-bottom:6px;
 }
 
-.champ input{
+.pageconnexion .champ input{
     padding:12px;
     border:1px solid #ccc;
     border-radius:4px;
     width: 450px;
 }
 
-.bouton-connexion{
+.pageconnexion .bouton-connexion{
     width:200px;
     padding:12px;
     background:#2c416e;
@@ -105,6 +110,10 @@ body {
     cursor:pointer;
 }
 
-.bouton-connexion:hover{
+.pageconnexion .bouton-connexion:hover{
     background:#2e3f64;
 }
+
+/* ===================================================== */
+/* =================== FIN PAGE CONNEXION ===================== */
+/* ===================================================== */
