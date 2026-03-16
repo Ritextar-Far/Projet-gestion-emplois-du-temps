@@ -20,7 +20,7 @@ L'application permet à l'équipe administrative de centraliser et faciliter la 
 
 ### Prérequis
 
-- PHP 7.4 ou supérieur
+- PHP 8.5
 - MySQL
 - Un serveur local (XAMPP, WAMP, MAMP ou équivalent)
 
