@@ -13,9 +13,9 @@
 </head>
 <body class="corps-enseignant">
         <div class="fil-dariane">
-        <a href="Intervenants.php"><img src="../assets/images/home.png" alt="Logo d'une maison"></a> > <span>Corps Enseignants</span>
+        <a href="Intervenants.php"><img src="../assets/images/home.png" alt="Logo d'une maison"></a> > <span>Corps Enseignant</span>
     </div>
     <div class="header-section">
         <h1>Corps Enseignant</h1>
-        <h2>Ajouter un enseignant</h2>
+        <a href="Ajouter_Corps_Enseignant.php" class="btn-ajouter">Ajouter un Corps Enseignant</a>
     </div>
