@@ -68,7 +68,7 @@ gestion-licence/
 │   ├── footer.php
 │   └── auth_check.php           ← Vérifie si connecté (inclus en haut de chaque page)
 │
-├── functions/                   ← Fonctions BDD par thème
+├── fonctions/                   ← Fonctions BDD par thème
 │   ├── db.php                   ← Connexion PDO
 │   ├── interventions.php
 │   ├── enseignants.php
