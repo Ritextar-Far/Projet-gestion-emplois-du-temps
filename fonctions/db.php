@@ -1,5 +1,5 @@
 <?php
-require_once('config.php');
+require_once('public/Inclus/config.php');
 
 try {
     $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
