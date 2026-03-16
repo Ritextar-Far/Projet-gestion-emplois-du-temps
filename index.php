@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <div class="page">
     <aside class="barre-gauche">
-        <img src="assets/images/logo.png" alt="Logo établissement" class="logo">
+        <img src="assets/images/Logo_StVincent.png" alt="Logo établissement" class="logo">
         <div class="text-logo">
             <p class="gros-text">Lycée Saint-vincent</p>
             <p class="sous-titre">Enseignement supérieur</p>
