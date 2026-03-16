@@ -63,10 +63,17 @@ gestion-licence/
 │   ├── types.php
 │   └── type_fiche.php
 │
-├── inclus/                    ← Morceaux réutilisables
-│   ├── header.php               ← <head> + navbar
-│   ├── footer.php
-│   └── auth_check.php           ← Vérifie si connecté (inclus en haut de chaque page)
+├── public/          
+│   ├── Inclus/ 
+|       ├── header.php                                  ← <head> + navbar
+|       ├── footer.php
+|       ├── auth_check.php                              ← Verifie si connecté (inclus en haut de chaque page
+|       ├── config.php                                  ← Paramètres de connexion à la base de données (hôte, nom, utilisateur, mot de passe)
+|
+│   ├── database/                               ← requête php stocké ici
+|         ├── requeteconnexion.php              ← <head> + navbar
+│         ├── ...
+|
 │
 ├── fonctions/                   ← Fonctions BDD par thème
 │   ├── db.php                   ← Connexion PDO
@@ -79,7 +86,6 @@ gestion-licence/
 │   ├── css/style.css
 │   └── js/script.js
 │
-└── config.php                ← Paramètres de connexion à la base de données (hôte, nom, utilisateur, mot de passe)
 
 ```
 
