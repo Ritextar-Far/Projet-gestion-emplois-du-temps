@@ -1,0 +1,91 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.page{
+    display:flex;
+    min-height:100vh;
+}
+
+.barre-gauche{
+    display: flex;
+    width:250px;
+    background:#e6e8ec;
+    padding:20px;
+}
+
+.gros-text{
+    font-size: 20px;
+}
+
+.text-logo{
+    display: block;
+    padding-left: 4px;
+    margin-top: -5px;
+    color: #2c416e;
+}
+
+.logo{
+    width: 25px;
+    height: 25px;
+}
+
+.contenu{
+    padding:60px 80px;
+}
+
+.titre-principal{
+    font-size:28px;
+    font-weight:700;
+    margin-bottom:40px;
+}
+
+.bloc-connexion{
+    max-width:500px;
+}
+
+.titre-connexion{
+    font-size:20px;
+    color:#2c416e;
+    margin-bottom:20px;
+}
+
+.formulaire-connexion{
+    display:flex;
+    flex-direction:column;
+}
+
+.champ{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:20px;
+}
+
+.champ label{
+    font-size:14px;
+    margin-bottom:6px;
+}
+
+.champ input{
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:4px;
+}
+
+.bouton-connexion{
+    width:200px;
+    padding:12px;
+    background:#2c416e;
+    color:white;
+    border:none;
+    border-radius:6px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.bouton-connexion:hover{
+    background:#2e3f64;
+}
