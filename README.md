@@ -56,7 +56,7 @@ gestion-licence/
 │   ├── interventions.php
 │   ├── intervention_ajout.php
 │   ├── intervention_modif.php
-│   ├── enseignants.php
+│   ├── corps_enseignants.php
 │   ├── enseignant_fiche.php
 │   ├── modules.php
 │   ├── module_fiche.php
