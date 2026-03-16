@@ -1,30 +1,9 @@
 <?php
 session_start();
-require_once('fonctions/db.php');
-
 $error = '';
+require_once('fonctions/db.php');
+require_once('public/database/requeteconnexion.php');
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email    = trim($_POST['email']);
-    $password = $_POST['password'];
-
-    if (empty($email) || empty($password)) {
-        $error = "Veuillez remplir tous les champs.";
-    } else {
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-        $stmt->execute([$email]);
-        $user = $stmt->fetch();
-
-        if ($user && password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['email']   = $user['email'];
-            header('Location: pagetest.php');
-            exit;
-        } else {
-            $error = "Email ou mot de passe incorrect.";
-        }
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <div class="page">
     <aside class="barre-gauche">
-        <img src="assets/images/Logo_StVincent.png" alt="Logo établissement" class="logo">
+        <img src="assets/images/logo.png" alt="Logo établissement" class="logo">
         <div class="text-logo">
             <p class="gros-text">Lycée Saint-vincent</p>
             <p class="sous-titre">Enseignement supérieur</p>
