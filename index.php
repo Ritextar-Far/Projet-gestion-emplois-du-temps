@@ -1,3 +1,11 @@
+<?php
+session_start();
+$error = '';
+require_once('fonctions/db.php');
+require_once('public/database/requeteconnexion.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -19,14 +27,19 @@
         <h1 class="titre-principal">Gestion du supérieur</h1>
         <section class="bloc-connexion">
             <h2 class="titre-connexion">Connexion au portail</h2>
-            <form class="formulaire-connexion">
+
+            <?php if ($error): ?>
+                <p style="color:red;"><?= htmlspecialchars($error) ?></p>
+            <?php endif; ?>
+
+            <form class="formulaire-connexion" method="POST" action="index.php">
                 <div class="champ">
                     <label>Email - champ obligatoire</label>
-                    <input type="email" placeholder="j.martins@mentalworks.fr">
+                    <input type="email" name="email" placeholder="ribas@gmail.com">
                 </div>
                 <div class="champ">
                     <label>Mot de passe - champ obligatoire</label>
-                    <input type="password" placeholder="**********">
+                    <input type="password" name="password" placeholder="**********">
                 </div>
                 <button type="submit" class="bouton-connexion">
                     Accéder au portail
@@ -35,6 +48,5 @@
         </section>
     </main>
 </div>
-
 </body>
 </html>
