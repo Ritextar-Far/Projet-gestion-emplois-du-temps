@@ -118,6 +118,76 @@ body {
 /* =================== FIN PAGE CONNEXION ===================== */
 /* ===================================================== */
 
+
+/* ===================================================== */
+/* =================== PAGE CORPS ENSEIGNANT ===================== */
+/* ===================================================== */
+
+.corps-enseignant .fil-dariane {
+
+display: flex;
+align-items: flex-start;
+padding: 15px 0px 15px 40px;
+gap: 20px;
+border: 1px solid #e6e8ec;
+margin-bottom: 30px;
+font-family: 'Poppins', sans-serif;
+color: #1F384C;
+}
+
+
+
+.corps-enseignant h1 {
+font-size: 26px;
+font-weight: 500;
+color: #1b2e53;
+font-family:'Poppins', sans-serif;
+}
+
+.corps-enseignant .contenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.corps-enseignant .contenu h1 {
+    font-size: 26px;
+    font-weight: 500;
+    color: #1b2e53;
+    font-family:'Poppins', sans-serif;
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 80px;
+}
+
+.header-section .btn-ajouter {
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: #2C416E;
+    padding: 0 20px;
+    height: 44px;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* ===================================================== */
+/* =================== FIN PAGE CORPS ENSEIGNANT ===================== */
+/* ===================================================== */
+
+
+
 /* ===================================================== */
 /* =================== PAGE INTERVENTION ===================== */
 /* ===================================================== */
