@@ -1,0 +1,230 @@
+/* ==========================================================================
+   1. RESET ET BASES
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6;
+    color: #1b2e53;
+}
+
+.page {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+
+
+
+
+
+
+
+.barre-gauche {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    background: #e6e8ec;
+    padding: 20px;
+    height: 100vh;
+    position: fixed; 
+    left: 0;
+    top: 0;
+}
+
+/* --- LOGO --- */
+.header-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    width: 30px;
+    height: 35px;
+    object-fit: contain;
+    margin-right: 10px;
+}
+
+.gros-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: #1b2e53;
+    line-height: 1.1;
+}
+
+.sous-titre {
+    font-size: 11px;
+    font-weight: bold;
+    color: #2c416e;
+}
+
+
+
+
+
+
+
+
+
+.menu-navigation {
+    flex-grow: 1; 
+}
+
+.titre-section {
+    font-size: 12px;
+    font-weight: bold;
+    color: #7a869a;
+    margin: 20px 0 10px 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.menu-navigation ul {
+    list-style: none;
+}
+
+.menu-navigation a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #2c416e;
+    font-size: 14px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    transition: all 0.2s ease;
+}
+
+.menu-navigation a:hover {
+    background: rgba(44, 65, 110, 0.05);
+}
+
+.icon-menu {
+    width: 18px;     
+    height: 18px;
+    margin-right: 12px; 
+    object-fit: contain;
+    vertical-align: middle; 
+}
+
+
+.menu-navigation li.active a {
+    background-color: #2c416e;
+    color: white;             
+    border-radius: 12px;    
+    font-weight: bold;
+}
+
+
+.menu-navigation li.active .icon-menu {
+    filter: brightness(0) invert(1);
+}
+
+
+
+
+
+
+.profil-utilisateur {
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid #ced4da;
+    margin-top: auto;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+    object-fit: cover;
+}
+
+.nom {
+    font-size: 14px;
+    font-weight: bold;
+    color: #1b2e53;
+}
+
+.role {
+    font-size: 12px;
+    color: #7a869a;
+}
+
+
+
+
+
+
+
+
+.contenu-principal {
+    margin-left: 250px; /* Doit correspondre à la largeur de la sidebar */
+    width: calc(100% - 250px);
+    padding: 40px 60px;
+}
+
+.titre-principal {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+
+
+.bloc-connexion {
+    max-width: 450px;
+}
+
+.champ {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.champ label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.champ input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+
+.champ input:focus {
+    border-color: #2c416e;
+}
+
+.bouton-connexion {
+    width: 100%;
+    padding: 12px;
+    background: #2c416e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.bouton-connexion:hover {
+    background: #1b2e53;
+}
