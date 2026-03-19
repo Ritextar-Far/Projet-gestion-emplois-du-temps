@@ -1,119 +1,73 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+.contenu {
+    margin-left: 275px;
+    flex: 1;
+    min-height: 100vh;
 }
 
-body {
-    font-family: 'Inter', 'Poppins';
+.titre-principal {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 40px;
 }
 
-.page{
-    display:flex;
-    min-height:100vh;
+.bloc-filtre {
+    max-width: 500px;
 }
 
-.barre-gauche{
+.titre-filtre {
+    font-size: 16px;
+    font-weight: 500;
+    color: #FFBD01;
+    margin-bottom: 20px;
+}
+
+.formulaire-filtre {
     display: flex;
-    width:250px;
-    background:#e6e8ec;
-    padding:20px;
-}
-
-.barre-gauche img {
-    width: 25px;
-    height: 30px;
-    object-fit: contain;
-}
-
-.barre-gauche .sous-titre {
-    font-size: 10px;
-    font-weight: bold;
-}
-
-.gros-text{
-    font-size: 15px;
-    font-weight: bold;
-    color: #1b2e53;
-}
-
-.text-logo{
-    display: block;
-    padding-left: 4px;
-    margin-top: 10px;
-    color: #2c416e;
-}
-
-.logo{
-    width: 25px;
-    height: 25px;
-    margin-top: 10px;
-    margin-right: 5px;
-}
-
-.contenu{
-    padding:60px 80px;
-}
-
-.titre-principal{
-    font-size:25px;
-    font-weight: 400;
-    margin-bottom:40px;
-}
-
-.bloc-filtre{
-    max-width:500px;
-}
-
-.titre-filtre{
-    font-size:16px;
-    font-weight: 500;
-    color:#FFBD01;
-    margin-bottom:20px;
-}
-
-.formulaire-filtre{
-    display:flex;
-    flex-direction:row;
-    align-items:center;
+    flex-direction: row;
+    align-items: center;
     gap: 8px;
-
 }
 
-.champ{
-    display:flex;
-    flex-direction:column;
-    margin-bottom:20px;
+.champ {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
 }
 
-.champ label{
-    font-size:14px;
-    margin-bottom:6px;
-    font-weight: 200;
+.champ label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    font-weight: 300;
 }
 
-.champ input{
-    padding:12px;
-    border:1px solid #ccc;
-    border-radius:4px;
+.champ input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
     width: 278px;
+    outline: none;
 }
 
-.bouton-filtre{
-    width:150px;
+.champ input:focus {
+    border-color: #2c416e;
+}
+
+
+.bouton-filtre {
+    width: 150px;
     height: 44px;
-    background:#FFBD01;
-    color:black;
+    background: #FFBD01;
+    color: black;
     font-weight: 500;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
-    font-family: 'Poppins';
-    justify-content: center;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
 }
 
-.bouton-connexion:hover{
-    background:#2e3f64;
+.bouton-filtre:hover {
+    background: #e6a800;
 }
 
 .hrcouleur {
@@ -134,7 +88,6 @@ table {
     height: 60px;
     border-radius: 5px;
     margin-top: 15px;
-
 }
 
 th {
