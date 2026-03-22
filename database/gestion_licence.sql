@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 22 mars 2026 à 20:07
+-- Généré le : dim. 22 mars 2026 à 20:37
 -- Version du serveur : 9.1.0
 -- Version de PHP : 8.3.14
 
@@ -96,7 +96,25 @@ CREATE TABLE IF NOT EXISTS `intervention_type` (
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `color` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `intervention_type`
+--
+
+INSERT INTO `intervention_type` (`id`, `name`, `description`, `color`) VALUES
+(1, 'Autonomie', 'Élèves en autonomie', '#6750A4'),
+(2, 'Conférence', 'Conférence effectuée par un ou plusieurs intervenants', '#2c416e'),
+(3, 'Cours', 'Cours dispensé par un ou plusieurs intervenants', '#E53935'),
+(4, 'Évaluation', 'Évaluation sous forme de POC ou d\'écrit', '#F57C00'),
+(5, 'Soutenance', 'Soutenance de fin de projet', '#2E7D32'),
+(6, 'Atelier', 'Atelier pratique encadré par un intervenant', '#00838F'),
+(7, 'TD', 'Travaux dirigés en petit groupe', '#6750A4'),
+(8, 'TP', 'Travaux pratiques en laboratoire ou salle informatique', '#AD1457'),
+(9, 'Projet', 'Séance dédiée au travail sur projet', '#4527A0'),
+(10, 'Réunion', 'Réunion pédagogique ou administrative', '#558B2F'),
+(11, 'Visite', 'Visite d\'entreprise ou de site', '#4E342E'),
+(12, 'Correction', 'Séance de correction d\'évaluation', '#37474F');
 
 -- --------------------------------------------------------
 
