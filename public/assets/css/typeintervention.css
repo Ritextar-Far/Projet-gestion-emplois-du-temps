@@ -94,3 +94,74 @@ th {
     color: #344054;
     font-weight: 450;
 }
+
+.entete-page {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.titre-principal {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+.bouton-ajouter {
+    background-color: #2c416e;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+.bouton-ajouter:hover {
+    background-color: #1e2f52;
+}
+table {
+    border-collapse: collapse;
+}
+thead tr {
+    background-color: rgba(232, 233, 236, 0.6);
+}
+tbody tr {
+    background-color: white;
+    border-bottom: 1px solid #eee;
+    transition: background 0.15s;
+}
+tbody tr:hover {
+    background-color: #f9f9fb;
+}
+td {
+    padding: 14px 16px;
+    font-size: 14px;
+    color: #344054;
+}
+th {
+    padding: 14px 16px;
+    text-align: left;
+}
+.pastille-couleur {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+.lien-fiche {
+    text-decoration: none;
+    color: #344054;
+    font-size: 14px;
+}
+.lien-fiche:hover {
+    color: #2c416e;
+    text-decoration: underline;
+}
+.aucun-resultat {
+    text-align: center;
+    color: #888;
+    padding: 30px;
+    font-style: italic;
+}
