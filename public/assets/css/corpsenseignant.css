@@ -1,26 +1,25 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+.contenu {
+    margin-left: 275px;
+    flex: 1;
+    min-height: 100vh;
 }
 
 body {
     font-family: 'Inter';
 }
 
-.corps-enseignant .fil-dariane {
-
+.fil {
     display: flex;
-    align-items: flex-start;
-    padding: 15px 0px 15px 40px;
-    gap: 20px;
-    border: 1px solid #e6e8ec;
-    margin-bottom: 30px;
-    font-family: 'Poppins', sans-serif;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
     color: #1F384C;
+    margin-bottom: 30px;
 }
-
-
+.fil a {
+    color: #1F384C;
+    text-decoration: none;
+}
 
 .corps-enseignant h1 {
     font-size: 26px;
