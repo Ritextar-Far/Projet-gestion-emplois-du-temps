@@ -1,6 +1,6 @@
 <?php
-require_once '../../fonctions/db.php';
-require_once '../../database/requetetypeintervention.php'
+require_once '../fonctions/db.php';
+require_once '../database/requetetypeintervention.php'
 
 ?>
 
@@ -9,15 +9,15 @@ require_once '../../database/requetetypeintervention.php'
 <head>
     <meta charset="UTF-8">
     <title>Types d'intervention</title>
-    <link rel="stylesheet" href="../assets/css/header.css">
-    <link rel="stylesheet" href="../assets/css/typeintervention.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/typeintervention.css">
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Quicksand:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 </head>
 
 <body class="pageintervention">
 <div class="page">
-    <?php require_once '../../inclus/header.php'; ?>
+    <?php require_once '../inclus/header.php'; ?>
     <main class="contenu">
 
         <div class="entete-page">
@@ -55,7 +55,7 @@ require_once '../../database/requetetypeintervention.php'
                 <tr>
                     <td colspan="4" class="aucun-resultat">Aucun type trouvé.</td>
                 </tr>
-             <?php else: ?>
+            <?php else: ?>
                 <?php foreach ($types as $type): ?>
                     <tr>
                         <td><?= htmlspecialchars($type['name']) ?></td>
