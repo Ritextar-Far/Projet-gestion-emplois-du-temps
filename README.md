@@ -95,7 +95,7 @@ gestion-licence/
 ### Nommage des fichiers
 
 - Les fichiers PHP des pages portent le nom de la fonctionnalité correspondante (ex : `calendrier.php`, `enseignants.php`).
-- Les fiches de modification/ajout suivent le format `entité_fiche.php` (ex : `module_fiche.php`).
+- Les fiches de modification/ajout suivent le format `fiche_type.php` (ex : `module_fiche.php`).
 - Les actions spécifiques suivent le format `entité_action.php` (ex : `intervention_ajout.php`).
 
 ### Organisation du code
