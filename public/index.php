@@ -1,8 +1,8 @@
 <?php
 session_start();
 $error = '';
-require_once('fonctions/db.php');
-require_once('database/requeteconnexion.php');
+require_once('../fonctions/db.php');
+require_once('../database/requeteconnexion.php');
 
 ?>
 
