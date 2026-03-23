@@ -65,7 +65,7 @@ require_once '../../database/requetetypeintervention.php'
                         </td>
                         <td>
                             <a href="fiche_type.php?id=<?= (int)$type['id'] ?>" class="lien-fiche">
-                                👁 Accéder à la fiche
+                                Accéder à la fiche
                             </a>
                         </td>
                     </tr>
