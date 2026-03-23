@@ -1,0 +1,216 @@
+.contenu {
+    margin-left: 275px;
+    flex: 1;
+    min-height: 100vh;
+    padding: 30px 40px;
+}
+
+
+.fil {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #1F384C;
+    margin-bottom: 30px;
+}
+.fil a {
+    color: #1F384C;
+    text-decoration: none;
+}
+
+.titre-fiche {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.grille-champs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+/* Champs */
+.champ {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+.champ label {
+    font-size: 14px;
+    font-weight: 400;
+    color: #344054;
+}
+.obligatoire {
+    font-weight: 300;
+    color: #667085;
+}
+.champ input[type="text"],
+.champ textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+.champ input:focus,
+.champ textarea:focus {
+    border-color: #2c416e;
+}
+.champ textarea {
+    resize: vertical;
+}
+
+.champ-couleur {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.boutons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-top: 10px;
+}
+.bouton-retour {
+    padding: 12px 24px;
+    border-radius: 6px;
+    background: #f3f0f0;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.bouton-supprimer {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    background: #E53935;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+}
+
+
+.bouton-enregistrer {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    background: #2c416e;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+}
+
+.alerte-succes {
+    background: #e8f5e9;
+    color: #2E7D32;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+.alerte-erreur {
+    background: #fdecea;
+    color: #c62828;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+dialog {
+    border: 1px #CCCCCC;
+    border-radius: 6px;
+    padding: 1rem;
+    max-width: 600px;
+    max-height: 325px;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 8px 30px #C4C4C4;
+}
+
+dialog::backdrop {
+    opacity: 60%;
+    background: #C4C4C4;
+}
+
+dialog p {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+}
+
+.modal-avertissement {
+    color: #000;
+    font-weight: 500;
+    line-height: 100%;
+    font-size: 16px;
+    margin-top: 50px;
+}
+
+.modal-boutons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2.8rem;
+    border-radius: 10px;
+}
+
+dialog h1 {
+    font-size: 22px;
+    color: #54595E;
+    font-weight: 600;
+    margin-left: 140px;
+}
+
+dialog h2 {
+    font-size: 14px;
+    color: #54595E99;
+    opacity: 60%;
+    font-weight: 600;
+    margin-top: -10px;
+    margin-left: 140px;
+
+}
+.modal-avertissement-confirm {
+    color: #000;
+    font-weight: 500;
+    line-height: 100%;
+    font-size: 16px;
+    margin-top: 15px;
+
+}
+
+.bouton-supprimer-confirmer {
+    background-color: #e53e3e;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.bouton-supprimer-annuler {
+    background-color: #F0F0F0;
+    color: black;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 525;
+}
+
