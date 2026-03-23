@@ -1,5 +1,5 @@
 <?php
-require_once('fonctions/db.php');
+require_once '../fonctions/db.php';
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -16,11 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['email'] = $user['email'];
-            header('Location: pagetest.php');
+            header('Location: type_intervention.php');
             exit;
         } else {
             $error = "Email ou mot de passe incorrect.";
         }
     }
 }
-?>
