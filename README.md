@@ -35,12 +35,13 @@ L'application permet à l'équipe administrative de centraliser et faciliter la 
 2. Placer le dossier `gestion-licence/` dans le répertoire de votre serveur local (ex : `htdocs/` pour XAMPP).
 
 3. Importer la base de données :
-   - Créer une base de données MySQL
-   - Importer le fichier SQL fourni
+   - Aller sur phpmyadmin
+   - Importer le fichier SQL fourni dans l'onglet "Importer"
+   - Executer.
 
-4. Configurer la connexion à la base de données dans le fichier `config.php`.
+5. Configurer la connexion à la base de données dans le fichier `config.php`.
 
-5. Accéder à l'application via `http://localhost/gestion-licence/`.
+6. Accéder à l'application via `http://localhost/gestion-licence/`.
 
 ## Arborescence du projet
 
