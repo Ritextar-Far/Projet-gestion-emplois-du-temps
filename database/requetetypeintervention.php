@@ -1,6 +1,6 @@
 <?php
 
-$filtre_nom = isset($_GET['nom']) ? trim($_GET['nom']) : '';
+$filtre_nom = isset($_POST['nom']) ? trim($_POST['nom']) : '';
 
 if ($filtre_nom !== '') {
     $stmt = $pdo->prepare("SELECT * FROM intervention_type WHERE name LIKE ? ORDER BY name ASC");
