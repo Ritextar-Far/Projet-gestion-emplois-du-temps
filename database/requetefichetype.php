@@ -18,10 +18,10 @@ if (!$type) {
 }
 
 // le Traitement Enregistrer
-if (isset($_GET['enregistrer'])) {
-    $nom   = trim($_GET['nom']);
-    $desc  = trim($_GET['description']);
-    $color = trim($_GET['color']);
+if (isset($_POST['enregistrer'])) {
+    $nom   = trim($_POST['nom']);
+    $desc  = trim($_POST['description']);
+    $color = trim($_POST['color']);
 
     if ($nom !== '' && $desc !== '' && $color !== '') {
         $stmt = $pdo->prepare("UPDATE intervention_type SET name = ?, description = ?, color = ? WHERE id = ?");
@@ -34,7 +34,7 @@ if (isset($_GET['enregistrer'])) {
 }
 
 // la Traitement Supprimer
-if (isset($_GET['supprimer'])) {
+if (isset($_POST['supprimer'])) {
     $stmt = $pdo->prepare("DELETE FROM intervention_type WHERE id = ?");
     $stmt->execute([$id]);
     header('Location: type_intervention.php');
