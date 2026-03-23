@@ -19,6 +19,11 @@ require_once '../database/requetetypeintervention.php'
 <div class="page">
     <?php require_once '../inclus/header.php'; ?>
     <main class="contenu">
+        <nav class="fil">
+            <a href="index.php"><img src="assets/images/Home.svg"></a>
+            <span>›</span>
+            <a href="type_intervention.php">Types d'intervention</a>
+        </nav>
 
         <div class="entete-page">
             <p class="titre-principal">Types d'intervention</p>
