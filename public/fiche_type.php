@@ -1,23 +1,23 @@
 <?php
-require_once '../../fonctions/db.php';
-require_once '../../database/requetefichetype.php';
+require_once '../fonctions/db.php';
+require_once '../database/requetefichetype.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title><?= htmlspecialchars($type['name']) ?> – Fiche type</title>
-    <link rel="stylesheet" href="../assets/css/header.css">
-    <link rel="stylesheet" href="../assets/css/fiche_type.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/fiche_type.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body class="page-fiche">
 <div class="page">
-    <?php require_once '../../inclus/header.php'; ?>
+    <?php require_once '../inclus/header.php'; ?>
     <main class="contenu">
 
         <nav class="fil">
-            <a href="../../index.php"><img src="../assets/images/Home.svg"></a>
+            <a href="../index.php"><img src="assets/images/Home.svg"></a>
             <span>›</span>
             <a href="type_intervention.php">Types d'intervention</a>
             <span>›</span>
@@ -39,13 +39,13 @@ require_once '../../database/requetefichetype.php';
 
                 <div class="champ">
                     <label>Nom - <span class="obligatoire">champ obligatoire</span></label>
-                    <input type="text" name="nom" value="<?= htmlspecialchars($_POST['nom'] ?? $type['name']) ?>">
+                    <input type="text" name="nom" value="<?= htmlspecialchars($_GET['nom'] ?? $type['name']) ?>">
                 </div>
 
                 <div class="champ">
                     <label>Code couleur (hexadécimal) - <span class="obligatoire">champ obligatoire</span></label>
                     <div class="champ-couleur">
-                        <input type="text" name="color" value="<?= htmlspecialchars($_POST['color'] ?? $type['color']) ?>">
+                        <input type="text" name="color" value="<?= htmlspecialchars($_GET['color'] ?? $type['color']) ?>">
                     </div>
                 </div>
 
@@ -53,7 +53,7 @@ require_once '../../database/requetefichetype.php';
 
             <div class="champ">
                 <label>Description - <span class="obligatoire">champ obligatoire</span></label>
-                <textarea name="description" rows="4"><?= htmlspecialchars($_POST['description'] ?? $type['description']) ?></textarea>
+                <textarea name="description" rows="4"><?= htmlspecialchars($_GET['description'] ?? $type['description']) ?></textarea>
             </div>
 
             <div class="boutons">
