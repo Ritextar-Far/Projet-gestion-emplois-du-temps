@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,10 +13,16 @@
 </head>
 <body class="corps-enseignant">
     <?php require_once '../inclus/header.php'; ?>
-        <div class="fil-dariane">
-        <a href="Intervenants.php"><img src="assets/images/home.png" alt="Logo d'une maison"></a> > <span>Corps Enseignant</span>
-    </div>
-    <div class="header-section">
-        <h1>Corps Enseignant</h1>
-        <a href="Ajouter_Corps_Enseignant.php" class="btn-ajouter">Ajouter un Corps Enseignant</a>
-    </div>
+    <main class="contenu">
+        <nav class="fil">
+            <a href="index.php"><img src="assets/images/Home.svg"></a>
+            <span>›</span>
+            <a href="type_intervention.php">Corps Enseignant</a>
+        </nav>
+        <div class="header-section">
+            <h1>Corps Enseignant</h1>
+            <a href="Ajouter_Corps_Enseignant.php" class="btn-ajouter">Ajouter un Corps Enseignant</a>
+        </div>
+    </main>
+</body>
+</html>
