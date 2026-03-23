@@ -1,8 +1,8 @@
 <?php
 session_start();
 $error = '';
-require_once('../fonctions/db.php');
-require_once('../database/requeteconnexion.php');
+require_once '../fonctions/db.php';
+require_once '../database/requeteconnexion.php';
 
 ?>
 
@@ -14,7 +14,7 @@ require_once('../database/requeteconnexion.php');
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Quicksand:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="pageconnexion">
 <div class="page">
     <aside class="barre-gauche">
         <img src="assets/images/logo.png" alt="Logo établissement" class="logo">
@@ -32,7 +32,7 @@ require_once('../database/requeteconnexion.php');
                 <p style="color:red;"><?= htmlspecialchars($error) ?></p>
             <?php endif; ?>
 
-            <form class="formulaire-connexion" method="POST" action="index.php">
+            <form class="formulaire-connexion" method="POST" action="">
                 <div class="champ">
                     <label>Email - champ obligatoire</label>
                     <input type="email" name="email" placeholder="ribas@gmail.com">
