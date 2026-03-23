@@ -55,14 +55,12 @@ require_once '../../database/requetetypeintervention.php'
                 <tr>
                     <td colspan="4" class="aucun-resultat">Aucun type trouvé.</td>
                 </tr>
-            <?php else: ?>
+             <?php else: ?>
                 <?php foreach ($types as $type): ?>
                     <tr>
                         <td><?= htmlspecialchars($type['name']) ?></td>
                         <td><?= htmlspecialchars($type['description']) ?></td>
-                        <td><span class="pastille-couleur"style="background-color: <?= htmlspecialchars($type['color']) ?>"></span>
-                            <span style="color: <?= htmlspecialchars($type['color']) ?>"><?= htmlspecialchars($type['color']) ?></span>
-                        </td>
+                        <td><span style="color: <?= htmlspecialchars($type['color']) ?>"><?= htmlspecialchars($type['color']) ?></span></td>
                         <td>
                             <a href="fiche_type.php?id=<?= (int)$type['id'] ?>" class="lien-fiche">
                                 Accéder à la fiche
