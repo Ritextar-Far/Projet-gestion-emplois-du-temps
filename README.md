@@ -47,11 +47,24 @@ L'application permet à l'équipe administrative de centraliser et faciliter la 
 
 ```
 gestion-licence/
+│                   ← Redirige vers login ou calendrier
 │
-├── index.php                    ← Redirige vers login ou calendrier
+├── database/                               ← requête php stocké ici
+|   ├── requeteconnexion.php              
+│   ├── ...
+|
+├── Inclus/ 
+|   ├── header.php                                  ← <head> + navbar
+|   ├── footer.php
+|   ├── auth_check.php                              ← Verifie si connecté (inclus en haut de chaque page
+|   ├── config.php      
 │
-├── pages/                       ← Une page = un fichier
-│   ├── login.php
+├── public/
+|    ├── assets/
+|        ├── css/style.css
+|        └── js/script.js
+|
+|   ├── index.php      ← Redirige vers login ou calendrier
 │   ├── logout.php
 │   ├── calendrier.php
 │   ├── interventions.php
@@ -62,18 +75,8 @@ gestion-licence/
 │   ├── modules.php
 │   ├── module_fiche.php
 │   ├── types.php
-│   └── type_fiche.php
-│
-├── public/          
-│   ├── Inclus/ 
-|       ├── header.php                                  ← <head> + navbar
-|       ├── footer.php
-|       ├── auth_check.php                              ← Verifie si connecté (inclus en haut de chaque page
-|       ├── config.php                                  ← Paramètres de connexion à la base de données (hôte, nom, utilisateur, mot de passe)
+│   └── type_fiche.php                                  ← Paramètres de connexion à la base de données (hôte, nom, utilisateur, mot de passe)
 |
-│   ├── database/                               ← requête php stocké ici
-|         ├── requeteconnexion.php              
-│         ├── ...
 |
 │
 ├── fonctions/                   ← Fonctions BDD par thème
@@ -83,9 +86,6 @@ gestion-licence/
 │   ├── modules.php
 │   └── types.php
 │
-├── assets/
-│   ├── css/style.css
-│   └── js/script.js
 │
 
 ```
@@ -100,7 +100,7 @@ gestion-licence/
 
 ### Organisation du code
 
-- **`pages/`** — Chaque page de l'application correspond à un fichier PHP unique.
+- **`public/`** — Chaque page de l'application correspond à un fichier PHP unique, interface visible par les utilisateurs.
 - **`inclus/`** — Contient les éléments réutilisables inclus dans les pages (header, footer, vérification d'authentification).
 - **`fonctions/`** — Contient les fonctions d'accès à la base de données, regroupées par thème.
 - **`assets/`** — Contient les fichiers statiques (CSS, JS, images).
