@@ -1,0 +1,45 @@
+.contenu {
+    margin-left: 275px;
+    flex: 1;
+    min-height: 100vh;
+}
+
+.fil {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #1F384C;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.fil a {
+    color: #1F384C;
+    text-decoration: none;
+}
+
+.titre {
+font-size: 22px;
+font-weight: 500;
+margin-bottom: 40px;
+}
+
+.liste-module {
+    margin: 45px;
+    opacity:0.6;
+}
+
+li {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.bouton-ajouter {
+    padding: 10px 20px;
+    background-color: #2c416e;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 550;
+}
