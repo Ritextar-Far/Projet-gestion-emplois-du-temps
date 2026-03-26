@@ -29,7 +29,10 @@ $page_actuelle = basename($_SERVER['PHP_SELF']);
         <p class="titre-section">PARAMÉTRAGE</p>
         <ul>
             <li class="<?= ($page_actuelle == 'modules.php') ? 'active' : '' ?>">
-                <a href="modules.php"><img src="assets/images/module.svg" class="icon-menu">Modules</a>
+                <a href="modules.php">
+                <img src="<?= ($page_actuelle == 'modules.php') ? 'assets/images/module-blanc.svg' : 'assets/images/module.svg' ?>" class="icon-menu">
+                Modules
+                </a>
             </li>
             <li class="<?= ($page_actuelle == 'type_intervention.php') ? 'active' : '' ?>">
                 <a href="type_intervention.php"><img src="assets/images/typeintervention.svg" class="icon-menu">Types d'intervention</a>
