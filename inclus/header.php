@@ -15,14 +15,22 @@ $page_actuelle = basename($_SERVER['PHP_SELF']);
         <p class="titre-section">MENU</p>
         <ul>
             <li class="<?= ($page_actuelle == 'calendrier.php') ? 'active' : '' ?>">
-                <a href="calendrier.php"><img src="assets/images/calendrier.svg" class="icon-menu">Calendrier</a>
+                <a href="calendrier.php">
+                    <img src="<?= ($page_actuelle == 'calendrier.php') ? 'assets/images/calendrier-blanc.svg' : 'assets/images/calendrier.svg' ?>" class="icon-menu">
+                    Calendrier
+                </a>
             </li>
             <li class="<?= ($page_actuelle == 'interventions.php') ? 'active' : '' ?>">
                 <a href="interventions.php">
-                    <img src="assets/images/interventions.svg" class="icon-menu">Interventions</a>
+                    <img src="<?= ($page_actuelle == 'interventions.php') ? 'assets/images/interventions-blanc.svg' : 'assets/images/interventions.svg' ?>" class="icon-menu">
+                    Interventions
+                </a>
             </li>
             <li class="<?= ($page_actuelle == 'corps_enseignant.php') ? 'active' : '' ?>">
-                <a href="corps_enseignant.php"><img src="assets/images/corps_enseignant.svg" class="icon-menu">Corps enseignant</a>
+                <a href="corps_enseignant.php">
+                    <img src="<?= ($page_actuelle == 'corps_enseignant.php') ? 'assets/images/corps_enseignant-blanc.svg' : 'assets/images/corps_enseignant.svg' ?>" class="icon-menu">
+                    Corps enseignant
+                </a>
             </li>
         </ul>
 
@@ -35,7 +43,10 @@ $page_actuelle = basename($_SERVER['PHP_SELF']);
                 </a>
             </li>
             <li class="<?= ($page_actuelle == 'type_intervention.php') ? 'active' : '' ?>">
-                <a href="type_intervention.php"><img src="assets/images/typeintervention.svg" class="icon-menu">Types d'intervention</a>
+                <a href="type_intervention.php">
+                    <img src="<?= ($page_actuelle == 'type_intervention.php') ? 'assets/images/typeintervention-blanc.svg' : 'assets/images/typeintervention.svg' ?>" class="icon-menu">
+                    Types d'intervention
+                </a>
             </li>
         </ul>
     </nav>
