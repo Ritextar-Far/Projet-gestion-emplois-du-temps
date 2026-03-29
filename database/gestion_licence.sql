@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 22 mars 2026 à 20:37
+-- Généré le : dim. 29 mars 2026 à 20:17
 -- Version du serveur : 9.1.0
 -- Version de PHP : 8.3.14
 
@@ -39,7 +39,31 @@ CREATE TABLE IF NOT EXISTS `course` (
   PRIMARY KEY (`id`),
   KEY `intervention_type_id` (`intervention_type_id`),
   KEY `module_id` (`module_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `course`
+--
+
+INSERT INTO `course` (`id`, `start_date`, `end_date`, `intervention_type_id`, `module_id`, `remotely`, `title`) VALUES
+(1, '2025-09-01 06:00:00', '2025-09-01 15:00:00', 3, 1, 0, NULL),
+(2, '2025-09-08 06:00:00', '2025-09-08 15:00:00', 3, 1, 0, NULL),
+(3, '2025-09-15 06:00:00', '2025-09-15 15:00:00', 3, 1, 0, NULL),
+(4, '2025-09-22 06:00:00', '2025-09-22 15:00:00', 3, 2, 0, NULL),
+(5, '2025-09-29 06:00:00', '2025-09-29 15:00:00', 3, 2, 0, NULL),
+(6, '2025-10-06 06:00:00', '2025-10-06 15:00:00', 3, 2, 0, NULL),
+(7, '2025-10-13 06:00:00', '2025-10-13 15:00:00', 3, 1, 0, NULL),
+(8, '2025-10-20 06:00:00', '2025-10-20 15:00:00', 3, 1, 0, NULL),
+(9, '2025-09-02 07:00:00', '2025-09-02 15:00:00', 3, 3, 0, NULL),
+(10, '2025-09-09 07:00:00', '2025-09-09 15:00:00', 3, 3, 0, NULL),
+(11, '2025-09-16 07:00:00', '2025-09-16 15:00:00', 3, 3, 0, NULL),
+(12, '2025-09-23 07:00:00', '2025-09-23 15:00:00', 3, 5, 0, NULL),
+(13, '2025-09-30 07:00:00', '2025-09-30 15:00:00', 3, 5, 0, NULL),
+(14, '2025-10-07 07:00:00', '2025-10-07 15:00:00', 3, 5, 0, NULL),
+(15, '2025-09-03 06:00:00', '2025-09-03 15:00:00', 3, 4, 0, NULL),
+(16, '2025-09-10 06:00:00', '2025-09-10 15:00:00', 3, 4, 0, NULL),
+(17, '2025-09-17 06:00:00', '2025-09-17 15:00:00', 3, 6, 0, NULL),
+(18, '2025-09-24 06:00:00', '2025-09-24 15:00:00', 3, 6, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -55,6 +79,30 @@ CREATE TABLE IF NOT EXISTS `course_instructor` (
   KEY `instructor_id` (`instructor_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Déchargement des données de la table `course_instructor`
+--
+
+INSERT INTO `course_instructor` (`course_id`, `instructor_id`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 2),
+(10, 2),
+(11, 2),
+(12, 2),
+(13, 2),
+(14, 2),
+(15, 3),
+(16, 3),
+(17, 3),
+(18, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -67,7 +115,16 @@ CREATE TABLE IF NOT EXISTS `instructor` (
   `user_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `instructor`
+--
+
+INSERT INTO `instructor` (`id`, `user_id`) VALUES
+(1, 2),
+(2, 3),
+(3, 4);
 
 -- --------------------------------------------------------
 
@@ -82,6 +139,18 @@ CREATE TABLE IF NOT EXISTS `instructor_module` (
   PRIMARY KEY (`instructor_id`,`module_id`),
   KEY `module_id` (`module_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `instructor_module`
+--
+
+INSERT INTO `instructor_module` (`instructor_id`, `module_id`) VALUES
+(1, 1),
+(1, 2),
+(2, 3),
+(2, 5),
+(3, 4),
+(3, 6);
 
 -- --------------------------------------------------------
 
@@ -103,18 +172,13 @@ CREATE TABLE IF NOT EXISTS `intervention_type` (
 --
 
 INSERT INTO `intervention_type` (`id`, `name`, `description`, `color`) VALUES
-(1, 'Autonomie', 'Élèves en autonomie', '#6750A4'),
-(2, 'Conférence', 'Conférence effectuée par un ou plusieurs intervenants', '#2c416e'),
-(3, 'Cours', 'Cours dispensé par un ou plusieurs intervenants', '#E53935'),
-(4, 'Évaluation', 'Évaluation sous forme de POC ou d\'écrit', '#F57C00'),
+(4, 'Évaluation', 'Évaluation sous forme de POC ou d\'écrit', '#F57C'),
 (5, 'Soutenance', 'Soutenance de fin de projet', '#2E7D32'),
-(6, 'Atelier', 'Atelier pratique encadré par un intervenant', '#00838F'),
 (7, 'TD', 'Travaux dirigés en petit groupe', '#6750A4'),
 (8, 'TP', 'Travaux pratiques en laboratoire ou salle informatique', '#AD1457'),
 (9, 'Projet', 'Séance dédiée au travail sur projet', '#4527A0'),
 (10, 'Réunion', 'Réunion pédagogique ou administrative', '#558B2F'),
-(11, 'Visite', 'Visite d\'entreprise ou de site', '#4E342E'),
-(12, 'Correction', 'Séance de correction d\'évaluation', '#37474F');
+(11, 'Visite', 'Visite d\'entreprise ou de site', '#4E342E');
 
 -- --------------------------------------------------------
 
@@ -135,7 +199,19 @@ CREATE TABLE IF NOT EXISTS `module` (
   UNIQUE KEY `code` (`code`),
   UNIQUE KEY `name` (`name`),
   KEY `parent_id` (`parent_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `module`
+--
+
+INSERT INTO `module` (`id`, `code`, `parent_id`, `name`, `description`, `hours_count`, `capstone_project`) VALUES
+(1, 'GIT', NULL, 'Git', 'Gestion de version avec Git', 20, 0),
+(2, 'ENV-TRAV', NULL, 'Environnement de travail', 'Configuration de l\'environnement de dev', 15, 0),
+(3, 'PYTHON', NULL, 'Python', 'Programmation Python', 30, 0),
+(4, 'JS', NULL, 'JavaScript', 'Développement JavaScript', 25, 0),
+(5, 'SQL', NULL, 'SQL', 'Bases de données SQL', 20, 0),
+(6, 'REACT', NULL, 'React', 'Framework React', 20, 0);
 
 -- --------------------------------------------------------
 
@@ -153,14 +229,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `role`, `email`, `last_name`, `first_name`, `password`) VALUES
-(1, 'admin', 'ribas@gmail.com', '', '', '$2a$12$Z9KHw3HikeG10BI0mqvsHO0gDqFl5AbAijuieIP6opcNe9lOgISnS');
+(1, 'admin', 'ribas@gmail.com', '', '', '$2a$12$Z9KHw3HikeG10BI0mqvsHO0gDqFl5AbAijuieIP6opcNe9lOgISnS'),
+(2, 'instructor', 'j.martins@mentalworks.fr', 'Martins-Jacquelot', 'Jeff', '$2a$12$placeholder'),
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
