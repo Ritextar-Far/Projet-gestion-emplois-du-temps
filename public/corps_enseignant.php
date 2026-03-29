@@ -1,96 +1,176 @@
+<?php
+require_once '../fonctions/db.php';
+require_once '../database/requetecorpsenseignant.php';
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corps Enseignant</title>
+    <title>Corps enseignant</title>
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/corpsenseignant.css">
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Quicksand:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 </head>
+
 <body class="corps-enseignant">
+<div class="page">
     <?php require_once '../inclus/header.php'; ?>
     <main class="contenu">
-
-        <!-- Fil d'Ariane -->
         <nav class="fil">
-            <a href="index.php">
-                <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18">
-                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7A1 1 0 002.707 10H4v7a1 1 0 001 1h4v-5h2v5h4a1 1 0 001-1v-7h1.293a1 1 0 00.707-1.707l-7-7z"/>
-                </svg>
-            </a>
+            <a href="index.php"><img src="assets/images/Home.svg"></a>
             <span>›</span>
-            <a href="corps_enseignant.php">Corps Enseignant</a>
+            <a href="corps_enseignant.php">Corps enseignant</a>
         </nav>
 
-        <!-- En-tête -->
-        <div class="header-section">
-            <h1>Corps Enseignant</h1>
-            <a href="Ajouter_Corps_Enseignant.php" class="btn-ajouter">Ajouter un Corps Enseignant</a>
+        <div class="entete-page">
+            <p class="titre-principal">Corps enseignant</p>
+            <button class="bouton-ajouter" onclick="document.getElementById('modal-ajouter').showModal()">
+                Ajouter un enseignant
+            </button>
         </div>
 
-        <!-- Filtres -->
-        <div class="carte-filtres">
-            <div class="etiquette-filtres">Filtres</div>
-            <div class="ligne-filtres">
-                <div class="groupe-filtre">
-                    <label for="nom">Nom de famille</label>
-                    <input id="nom" type="text" placeholder="Saisissez le nom de famille">
-                </div>
-                <div class="groupe-filtre">
-                    <label for="prenom">Prénom</label>
-                    <input id="prenom" type="text" placeholder="Saisissez le prénom">
-                </div>
-                <div class="groupe-filtre">
-                    <label for="email">Email</label>
-                    <input id="email" type="text" placeholder="Saisissez l'email">
-                </div>
-                <button class="bouton-filtrer">Filtrer</button>
-            </div>
-        </div>
+        <?php if (isset($_GET['success'])): ?>
+            <div class="alerte-succes">L'enseignant a bien été ajouté.</div>
+        <?php endif; ?>
+        <?php if (isset($erreur_ajout)): ?>
+            <div class="alerte-erreur">⚠️ <?= htmlspecialchars($erreur_ajout) ?></div>
+        <?php endif; ?>
 
-        <!-- Résultats -->
-        <div class="nombre-resultats">1 enseignant trouvé</div>
+        <section class="bloc-filtre">
+            <h3 class="titre-filtre">Filtres</h3>
+            <form class="formulaire-filtre" method="POST" action="">
+                <div class="champ">
+                    <label>Nom de famille</label>
+                    <input type="text" name="nom" placeholder="Saisissez le nom de famille"
+                           value="<?= htmlspecialchars($filtre_nom) ?>">
+                </div>
+                <div class="champ">
+                    <label>Prénom</label>
+                    <input type="text" name="prenom" placeholder="Saisissez le prénom"
+                           value="<?= htmlspecialchars($filtre_prenom) ?>">
+                </div>
+                <div class="champ">
+                    <label>Email</label>
+                    <input type="text" name="email" placeholder="Saisissez l'email"
+                           value="<?= htmlspecialchars($filtre_email) ?>">
+                </div>
+                <button type="submit" class="bouton-filtre">Filtrer</button>
+            </form>
+        </section>
 
-        <!-- Tableau -->
-        <div class="enveloppe-tableau">
-            <table>
-                <thead>
+        <div class="hrcouleur"></div>
+
+        <h3><?= $nb_enseignants ?> enseignant<?= $nb_enseignants > 1 ? 's' : '' ?> trouvé<?= $nb_enseignants > 1 ? 's' : '' ?></h3>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nom de famille</th>
+                <th>Prénom</th>
+                <th>Modules enseignés</th>
+                <th>Nombre d'heures</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php if ($nb_enseignants === 0): ?>
+                <tr>
+                    <td colspan="5" class="aucun-resultat">Aucun enseignant trouvé.</td>
+                </tr>
+            <?php else: ?>
+                <?php foreach ($enseignants as $enseignant): ?>
                     <tr>
-                        <th>Nom de famille</th>
-                        <th>Prénom</th>
-                        <th>Modules enseignés</th>
-                        <th>Nombre d'heures</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Martins-Jacquelot</td>
-                        <td>Jeff</td>
-                        <td class="cellule-modules">
-                            Git, Environnement de travail,<br>
-                            Environnement de production, Monitorer<br>
-                            une base de données + performance
-                        </td>
-                        <td class="cellule-heures">72h</td>
-                        <td class="cellule-action">
-                            <a href="fiche_enseignant.php" class="bouton-voir">
-                                <svg viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
-                                </svg>
+                        <td><?= htmlspecialchars($enseignant['last_name']) ?></td>
+                        <td><?= htmlspecialchars($enseignant['first_name']) ?></td>
+                        <td><?= htmlspecialchars($enseignant['modules'] ?? '—') ?></td>
+                        <td><?= (int)$enseignant['total_heures'] ?>h</td>
+                        <td>
+                            <a href="fiche_enseignant.php?id=<?= (int)$enseignant['id'] ?>" class="lien-fiche">
                                 Accéder à la fiche
                             </a>
                         </td>
                     </tr>
-                </tbody>
-            </table>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            </tbody>
+        </table>
+    </main>
+</div>
+
+<!-- Modale : Ajouter un enseignant -->
+<dialog id="modal-ajouter">
+    <button class="modal-fermer" type="button" onclick="document.getElementById('modal-ajouter').close()">×</button>
+
+    <div class="modal-entete">
+        <div class="modal-icone">+</div>
+        <div>
+            <h2 class="modal-titre">Ajouter un enseignant</h2>
+            <p class="modal-sous-titre">Remplissez les informations ci-dessous.</p>
+        </div>
+    </div>
+
+    <form method="POST" action="">
+        <input type="hidden" name="action" value="ajouter">
+
+        <div class="modal-grille">
+            <div class="modal-champ">
+                <label>Nom de famille - <span class="obligatoire">champ obligatoire</span></label>
+                <input type="text" name="nouveau_nom" placeholder="Saisissez le nom de famille">
+            </div>
+            <div class="modal-champ">
+                <label>Prénom - <span class="obligatoire">champ obligatoire</span></label>
+                <input type="text" name="nouveau_prenom" placeholder="Saisissez le prénom">
+            </div>
+            <div class="modal-champ">
+                <label>Email - <span class="obligatoire">champ obligatoire</span></label>
+                <input type="text" name="nouveau_email" placeholder="Saisissez l'email">
+            </div>
+            <div class="modal-champ">
+                <label>Nombre d'heures</label>
+                <input type="text" value="0h" disabled>
+            </div>
         </div>
 
-    </main>
+        <div class="modal-champ">
+            <label>Modules enseignés - <span class="obligatoire">champ obligatoire</span></label>
+            <div class="modal-multiselect">
+                <div class="modal-tags" id="modal-tags"></div>
+                <select id="modal-select-modules" onchange="ajouterTagModal(this)">
+                    <option value="">— Sélectionner un module —</option>
+                    <?php foreach ($tous_modules as $m): ?>
+                        <option value="<?= $m['id'] ?>" data-nom="<?= htmlspecialchars($m['name']) ?>">
+                            <?= htmlspecialchars($m['name']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+
+        <div class="modal-boutons">
+            <button type="button" class="bouton-annuler" onclick="document.getElementById('modal-ajouter').close()">Annuler</button>
+            <button type="submit" class="bouton-enregistrer-modal">Enregistrer les informations</button>
+        </div>
+    </form>
+</dialog>
+
+<script>
+function ajouterTagModal(select) {
+    const id  = select.value;
+    const nom = select.options[select.selectedIndex].dataset.nom;
+    if (!id) return;
+    if (document.querySelector(`#modal-tags .modal-tag[data-id="${id}"]`)) {
+        select.value = '';
+        return;
+    }
+    const tag = document.createElement('span');
+    tag.className = 'modal-tag';
+    tag.dataset.id = id;
+    tag.innerHTML = `${nom} <button type="button" onclick="this.closest('.modal-tag').remove()">×</button><input type="hidden" name="nouveaux_modules[]" value="${id}">`;
+    document.getElementById('modal-tags').appendChild(tag);
+    select.value = '';
+}
+</script>
 </body>
 </html>
