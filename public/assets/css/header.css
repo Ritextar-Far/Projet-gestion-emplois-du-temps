@@ -74,7 +74,6 @@ html, body {
     letter-spacing: 1px;
 }
 
-
 .menu-navigation ul {
     list-style: none;
     padding: 0;
@@ -107,6 +106,7 @@ html, body {
     background-color: #2c416e;
     border-radius: 12px;
     font-weight: bold;
+    color: white;
 }
 
 
