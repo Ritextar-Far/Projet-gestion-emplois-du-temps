@@ -87,7 +87,7 @@ require_once '../database/requetetypeintervention.php';
     </main>
 </div>
 
-<!-- Modale : Ajouter un type d'intervention -->
+
 <dialog id="modal-ajouter">
     <button class="modal-fermer" type="button" onclick="document.getElementById('modal-ajouter').close()">×</button>
 
