@@ -2,6 +2,7 @@
     margin-left: 275px;
     flex: 1;
     min-height: 100vh;
+    padding: 0 60px 0 30px;
 }
 
 .fil {
@@ -130,6 +131,7 @@ th {
     font-weight: 500;
     transition: background 0.2s;
 }
+
 .bouton-ajouter:hover {
     background-color: #1e2f52;
 }
