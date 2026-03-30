@@ -53,7 +53,7 @@ gestion-licence/
 |   ├── requeteconnexion.php              
 │   ├── ...
 |
-├── Inclus/ 
+├── inclus/ 
 |   ├── header.php                                  ← <head> + navbar
 |   ├── footer.php
 |   ├── auth_check.php                              ← Verifie si connecté (inclus en haut de chaque page
@@ -70,12 +70,12 @@ gestion-licence/
 │   ├── interventions.php
 │   ├── intervention_ajout.php
 │   ├── intervention_modif.php
-│   ├── corps_enseignants.php
-│   ├── enseignant_fiche.php
+│   ├── corps_enseignant.php
+│   ├── fiche_enseignant.php
 │   ├── modules.php
 │   ├── module_fiche.php
 │   ├── types.php
-│   └── type_fiche.php                                  ← Paramètres de connexion à la base de données (hôte, nom, utilisateur, mot de passe)
+│   └── fiche_type.php                                  ← Paramètres de connexion à la base de données (hôte, nom, utilisateur, mot de passe)
 |
 |
 │
