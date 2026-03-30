@@ -88,20 +88,7 @@ INSERT INTO `course_instructor` (`course_id`, `instructor_id`) VALUES
 (2, 1),
 (3, 1),
 (4, 1),
-(5, 1),
-(6, 1),
-(7, 1),
-(8, 1),
-(9, 2),
-(10, 2),
-(11, 2),
-(12, 2),
-(13, 2),
-(14, 2),
-(15, 3),
-(16, 3),
-(17, 3),
-(18, 3);
+
 
 -- --------------------------------------------------------
 
@@ -237,7 +224,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `role`, `email`, `last_name`, `first_name`, `password`) VALUES
 (1, 'admin', 'ribas@gmail.com', '', '', '$2a$12$Z9KHw3HikeG10BI0mqvsHO0gDqFl5AbAijuieIP6opcNe9lOgISnS'),
-(2, 'instructor', 'j.martins@mentalworks.fr', 'Martins-Jacquelot', 'Jeff', '$2a$12$placeholder'),
+(2, 'instructor', 'j.martins@mentalworks.fr', 'Martins-Jacquelot', 'Jeff', '$2a$12$placeholder');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
