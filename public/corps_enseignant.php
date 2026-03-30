@@ -127,12 +127,7 @@ require_once '../database/requetecorpsenseignant.php';
                 <label>Email - <span class="obligatoire">champ obligatoire</span></label>
                 <input type="text" name="nouveau_email" placeholder="Saisissez l'email">
             </div>
-            <div class="modal-champ">
-                <label>Nombre d'heures</label>
-                <input type="text" value="0h" disabled>
-            </div>
         </div>
-
         <div class="modal-champ">
             <label>Modules enseignés - <span class="obligatoire">champ obligatoire</span></label>
             <div class="modal-multiselect">
