@@ -20,16 +20,38 @@
             <a href="type_intervention.php">Modules</a>
         </nav>
         <p class="titre">Modules</p>
-        <div class="liste-module">
-            <li>Gestion de projet - Méthode Agile (63h)</li>
-            <li>Cadre légal - Droit numérique (21h)</li>
-                <ul>RGPD</ul>
-                <ul>Propriété intellectuelle</ul>
-                <ul>RSE</ul>
-                <ul>Accessibilité</ul>
-        </div>
-        <button class="bouton-ajouter">Ajouter un module</button>
-    </main>
+    
         
+        
+        <?php $pdo = new PDO('mysql:host=localhost;dbname=gestion_licence;charset=utf8mb4', 'root', '');
+
+        $stmt = $pdo->query("SELECT * FROM module WHERE parent_id IS NULL ORDER BY name");
+        $modules = $stmt->fetchAll(PDO::FETCH_ASSOC);?>
+
+        <div class="liste-module">
+            <?php foreach ($modules as $module): ?>
+            <li>
+                <?= htmlspecialchars($module['name']) ?>
+                <?php if ($module['hours_count']): ?>
+                    (<?= $module['hours_count'] ?>h)
+                <?php endif; ?>
+            </li>
+
+            <?php $stmt2 = $pdo->prepare("SELECT * FROM module WHERE parent_id = 'Devops et Cybersecurité' ORDER BY name");
+            $sousModules = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($sousModules as $sub): ?>
+                <ul>
+                    <li><?= htmlspecialchars($sub['name']) ?></li>
+                </ul>
+            <?php endforeach; ?>
+
+            <?php endforeach; ?>
+        </div>
+
+
+
+
+        <button onclick="window.location.href='fiche-module.php'" class="bouton-ajouter">Ajouter un module</button>
+    </main>
 </body>
 </html>
