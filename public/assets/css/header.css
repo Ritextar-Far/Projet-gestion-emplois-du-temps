@@ -140,6 +140,18 @@ html, body {
     margin: 0;
 }
 
+.lien-deconnexion {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 11px;
+    color: #e53e3e;
+    text-decoration: none;
+}
+
+.lien-deconnexion:hover {
+    text-decoration: underline;
+}
+
 .contenu-principal {
     margin-left: 250px;
     flex: 1;
