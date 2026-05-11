@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['enregistrer'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Module - Tailwind CSS</title>
+    <title>Module </title>
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/fiche-momule.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['enregistrer'])) {
             <a href="type_intervention.php">Modules</a>
         </nav>
 
-        <h1 class="page-title">Tailwind CSS</h1>
+        <h1 class="page-title">Module</h1>
 
         <?php if($message) echo "<p class='alert'>$message</p>"; ?>
 
