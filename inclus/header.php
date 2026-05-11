@@ -56,6 +56,7 @@ $page_actuelle = basename($_SERVER['PHP_SELF']);
         <div class="infos-utilisateur">
             <p class="nom">Stella Ribas</p>
             <p class="role">Administrateur</p>
+            <a href="logout.php" class="lien-deconnexion">Se déconnecter</a>
         </div>
     </div>
 </aside>
