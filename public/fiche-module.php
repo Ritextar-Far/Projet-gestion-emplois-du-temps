@@ -76,15 +76,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['enregistrer'])) {
                     <label>Nombre d'heures</label>
                     <input type="number" name="heures" value="14">
                 </div>
-                <div class="form-group">
-                    <label>Parent</label>
-                    <div class="select-wrapper">
-                        <select name="parent">
-                            <option value="Développement front">Développement front</option>
-                            <option value="Développement back">Développement back</option>
-                        </select>
-                    </div>
-                </div>
             </div>
 
             <div class="form-group full-width">
@@ -102,7 +93,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['enregistrer'])) {
 
             <div class="form-actions">
                 <a href="modules.php" class="btn btn-secondary">Retour à la liste</a>
-                <button type="button" class="btn btn-danger">Supprimer</button>
                 <button type="submit" name="enregistrer" class="btn btn-primary">Enregistrer les informations</button>
             </div>
         </form>
