@@ -36,8 +36,7 @@
                     (<?= $module['hours_count'] ?>h)
                 <?php endif; ?>
             </li>
-
-
+            
             <?php endforeach; ?>
         </div>
 
