@@ -37,13 +37,6 @@
                 <?php endif; ?>
             </li>
 
-            <?php $stmt2 = $pdo->prepare("SELECT * FROM module WHERE parent_id = 'Devops et Cybersecurité' ORDER BY name");
-            $sousModules = $stmt2->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($sousModules as $sub): ?>
-                <ul>
-                    <li><?= htmlspecialchars($sub['name']) ?></li>
-                </ul>
-            <?php endforeach; ?>
 
             <?php endforeach; ?>
         </div>

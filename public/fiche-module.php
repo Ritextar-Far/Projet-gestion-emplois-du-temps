@@ -1,17 +1,32 @@
 <?php
 $message = "";
 
+$db = new PDO('mysql:host=localhost;dbname=gestion_licence;charset=utf8mb4', 'root', '');
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['enregistrer'])) {
     $code = $_POST['code'] ?? '';
     $nom = $_POST['nom'] ?? '';
     $heures = $_POST['heures'] ?? 0;
-    $parent = $_POST['parent'] ?? '';
+    $parent = !empty($_POST['parent']) ? $_POST['parent'] : null; 
     $description = $_POST['description'] ?? '';
     $projet_fil_rouge = isset($_POST['projet_fil_rouge']) ? 1 : 0;
 
     try {
-        $sql = "INSERT INTO modules (code, nom, nombre_heures, parent, description, projet_fil_rouge) 
+        $sql = "INSERT INTO module (code, name, hours_count, parent_id, description, capstone_project) 
                 VALUES (:code, :nom, :heures, :parent, :description, :projet_fil_rouge)";
+        
+        $query = $db->prepare($sql);
+        
+        $query->execute([
+            'code' => $code,
+            'nom' => $nom,
+            'heures' => $heures,
+            'parent' => $parent, 
+            'description' => $description,
+            'projet_fil_rouge' => $projet_fil_rouge
+        ]);
+
+        $message = "Module ajouté avec succès !";
     } catch (Exception $e) {
         $message = "Erreur lors de l'ajout : " . $e->getMessage();
     }
