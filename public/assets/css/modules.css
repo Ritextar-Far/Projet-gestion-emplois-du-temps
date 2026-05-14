@@ -43,3 +43,8 @@ li {
     cursor: pointer;
     font-weight: 550;
 }
+
+.module-link {
+    text-decoration: none;
+    color: black;
+}

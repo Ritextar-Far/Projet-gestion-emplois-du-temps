@@ -31,7 +31,7 @@
         <div class="liste-module">
             <?php foreach ($modules as $module): ?>
             <li>
-                <?= htmlspecialchars($module['name']) ?>
+                <a href="fiche-module.php?id=<?= $module['id']; ?>" class="module-link"><?= htmlspecialchars($module['name']) ?></a>
                 <?php if ($module['hours_count']): ?>
                     (<?= $module['hours_count'] ?>h)
                 <?php endif; ?>
