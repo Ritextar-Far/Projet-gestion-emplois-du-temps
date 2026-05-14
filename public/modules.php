@@ -25,7 +25,7 @@
         
         <?php $pdo = new PDO('mysql:host=localhost;dbname=gestion_licence;charset=utf8mb4', 'root', '');
 
-        $stmt = $pdo->query("SELECT * FROM module WHERE parent_id ORDER BY name");
+        $stmt = $pdo->query("SELECT * FROM module ORDER BY name");
         $modules = $stmt->fetchAll(PDO::FETCH_ASSOC);?>
 
         <div class="liste-module">
