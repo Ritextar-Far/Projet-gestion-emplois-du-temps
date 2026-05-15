@@ -3,19 +3,18 @@ $message = "";
 
 $db = new PDO('mysql:host=localhost;dbname=gestion_licence;charset=utf8mb4', 'root', '');
 
-// 1. Vérifier si on est en mode modification (présence d'un ID dans l'URL)
+// 1. Déterminer si on est en mode modification ou ajout
 $id_module = isset($_GET['id']) ? intval($_GET['id']) : null;
 $is_edit = ($id_module !== null);
 
-// Initialisation des variables pour les champs du formulaire (valeurs par défaut pour le mode ajout)
 $code_val = "";
 $nom_val = "";
 $heures_val = "14";
 $parent_val = null;
 $description_val = "Piloter un projet informatique";
-$projet_fil_rouge_val = 1; // Coché par défaut
+$projet_fil_rouge_val = 1;
 
-// 2. Si on est en mode modification, récupérer les infos actuelles du module
+// 2. Si mode édition, récupérer les infos
 if ($is_edit) {
     $stmt = $db->prepare("SELECT * FROM module WHERE id = :id");
     $stmt->execute(['id' => $id_module]);
@@ -29,13 +28,24 @@ if ($is_edit) {
         $description_val = $module['description'];
         $projet_fil_rouge_val = $module['capstone_project'];
     } else {
-        // Si l'ID n'existe pas en BDD, on bascule en mode ajout
         $is_edit = false;
         $id_module = null;
     }
 }
 
-// 3. Gestion de la soumission du formulaire (Enregistrement ou Modification)
+// 3. Traitement de la suppression
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmer_suppression']) && $is_edit) {
+    try {
+        $stmt = $db->prepare("DELETE FROM module WHERE id = :id");
+        $stmt->execute(['id' => $id_module]);
+        header("Location: modules.php");
+        exit;
+    } catch (PDOException $e) {
+        $message = "Erreur : Impossible de supprimer ce module car des interventions y sont probablement liées.";
+    }
+}
+
+// 4. Traitement de l'enregistrement (Ajout ou Modification)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['enregistrer'])) {
     $code = $_POST['code'] ?? '';
     $nom = $_POST['nom'] ?? '';
@@ -46,47 +56,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['enregistrer'])) {
 
     try {
         if ($is_edit) {
-            // Mode modification : UPDATE
-            $sql = "UPDATE module 
-                    SET code = :code, name = :nom, hours_count = :heures, parent_id = :parent, description = :description, capstone_project = :projet_fil_rouge 
-                    WHERE id = :id";
-            
+            $sql = "UPDATE module SET code = :code, name = :nom, hours_count = :heures, parent_id = :parent, description = :description, capstone_project = :projet_fil_rouge WHERE id = :id";
             $query = $db->prepare($sql);
             $query->execute([
-                'code' => $code,
-                'nom' => $nom,
-                'heures' => $heures,
-                'parent' => $parent, 
-                'description' => $description,
-                'projet_fil_rouge' => $projet_fil_rouge,
-                'id' => $id_module
+                'code' => $code, 'nom' => $nom, 'heures' => $heures, 'parent' => $parent, 
+                'description' => $description, 'projet_fil_rouge' => $projet_fil_rouge, 'id' => $id_module
             ]);
-
             $message = "Module modifié avec succès !";
-            
-            // Mettre à jour les variables pour réafficher les nouvelles valeurs saisies
-            $code_val = $code;
-            $nom_val = $nom;
-            $heures_val = $heures;
-            $parent_val = $parent;
-            $description_val = $description;
-            $projet_fil_rouge_val = $projet_fil_rouge;
-
+            $code_val = $code; $nom_val = $nom; $heures_val = $heures; 
+            $parent_val = $parent; $description_val = $description; $projet_fil_rouge_val = $projet_fil_rouge;
         } else {
-            // Mode ajout : INSERT
-            $sql = "INSERT INTO module (code, name, hours_count, parent_id, description, capstone_project) 
-                    VALUES (:code, :nom, :heures, :parent, :description, :projet_fil_rouge)";
-            
+            $sql = "INSERT INTO module (code, name, hours_count, parent_id, description, capstone_project) VALUES (:code, :nom, :heures, :parent, :description, :projet_fil_rouge)";
             $query = $db->prepare($sql);
             $query->execute([
-                'code' => $code,
-                'nom' => $nom,
-                'heures' => $heures,
-                'parent' => $parent, 
-                'description' => $description,
-                'projet_fil_rouge' => $projet_fil_rouge
+                'code' => $code, 'nom' => $nom, 'heures' => $heures, 'parent' => $parent, 
+                'description' => $description, 'projet_fil_rouge' => $projet_fil_rouge
             ]);
-
             $message = "Module ajouté avec succès !";
         }
     } catch (Exception $e) {
@@ -115,11 +100,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['enregistrer'])) {
             <a href="index.php"><img src="assets/images/home.svg"></a>
             <span>›</span>
             <a href="modules.php">Modules</a>
+            <?php if ($is_edit): ?>
+                <span>›</span>
+                <a href="#"><?= htmlspecialchars($nom_val) ?></a>
+            <?php endif; ?>
         </nav>
 
-        <h1 class="page-title"><?= $is_edit ? "Modifier le Module : " . htmlspecialchars($nom_val) : "Module" ?></h1>
+        <h1 class="page-title"><?= $is_edit ? htmlspecialchars($nom_val) : "Module" ?></h1>
 
-        <?php if($message) echo "<p class='alert' style='padding: 10px; margin-bottom: 15px; color: green; font-weight: bold;'>$message</p>"; ?>
+        <?php if($message): ?>
+            <p class='alert' style='padding: 10px; margin-bottom: 15px; font-weight: bold; color: <?= strpos($message, "Erreur") !== false ? "red" : "green" ?>;'>
+                <?= $message ?>
+            </p>
+        <?php endif; ?>
 
         <form action="" method="POST" class="module-form">
             <div class="form-row">
@@ -138,6 +131,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['enregistrer'])) {
                     <label>Nombre d'heures</label>
                     <input type="number" name="heures" value="<?= htmlspecialchars($heures_val) ?>">
                 </div>
+                <div class="form-group">
+                    <label>Parent</label>
+                    <select name="parent" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-family: 'Poppins', sans-serif;">
+                        <option value="">-- Aucun --</option>
+                        <option value="1" <?= $parent_val == 1 ? 'selected' : '' ?>>Développement front</option>
+                    </select>
+                </div>
             </div>
 
             <div class="form-group full-width">
@@ -153,12 +153,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['enregistrer'])) {
                 <span class="toggle-text">Module effectué sur le projet fil rouge</span>
             </div>
 
-            <div class="form-actions">
+            <div class="form-actions" style="display: flex; gap: 10px; align-items: center;">
                 <a href="modules.php" class="btn btn-secondary">Retour à la liste</a>
+                
+                <?php if ($is_edit): ?>
+                    <button type="button" class="btn-delete-trigger" onclick="document.getElementById('modalSuppression').style.display='flex'">Supprimer</button>
+                <?php endif; ?>
+
                 <button type="submit" name="enregistrer" class="btn btn-primary">Enregistrer les informations</button>
             </div>
         </form>
     </main>
     
+    <?php if ($is_edit): ?>
+    <div id="modalSuppression" class="modal-overlay">
+        <div class="modal-content">
+            <button type="button" class="modal-close" onclick="document.getElementById('modalSuppression').style.display='none'"><i class="fas fa-times"></i></button>
+            
+            <div class="modal-header">
+                <div class="modal-icon"><i class="fas fa-times"></i></div>
+                <div class="modal-title">
+                    <h2>Supprimer le module</h2>
+                    <p>Confirmation de l'action</p>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                Vous vous apprêtez à supprimer le module, cette action est irrévocable.<br>
+                A noter qu'aucune intervention ne doit être liée à ce module pour pouvoir le supprimer.<br><br>
+                <strong>Confirmez-vous l'action ?</strong>
+            </div>
+
+            <form method="POST" action="">
+                <div class="modal-actions">
+                    <button type="button" class="modal-btn btn-cancel" onclick="document.getElementById('modalSuppression').style.display='none'">Annuler</button>
+                    <button type="submit" name="confirmer_suppression" class="modal-btn btn-confirm">Confirmer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <?php endif; ?>
+
 </body>
 </html>
