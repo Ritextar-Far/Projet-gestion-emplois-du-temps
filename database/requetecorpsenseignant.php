@@ -31,9 +31,24 @@ if (isset($_POST['action']) && $_POST['action'] === 'ajouter') {
 }
 
 // Filtres
-$filtre_nom    = isset($_POST['nom'])    ? trim($_POST['nom'])    : '';
-$filtre_prenom = isset($_POST['prenom']) ? trim($_POST['prenom']) : '';
-$filtre_email  = isset($_POST['email'])  ? trim($_POST['email'])  : '';
+$filtre_nom    = isset($_GET['nom'])    ? trim($_GET['nom'])    : '';
+$filtre_prenom = isset($_GET['prenom']) ? trim($_GET['prenom']) : '';
+$filtre_email  = isset($_GET['email'])  ? trim($_GET['email'])  : '';
+
+$page     = max(1, (int)($_GET['page'] ?? 1));
+$par_page = 10;
+
+$count_stmt = $pdo->prepare("
+    SELECT COUNT(DISTINCT i.id)
+    FROM instructor i
+    JOIN users u ON i.user_id = u.id
+    WHERE u.last_name LIKE ? AND u.first_name LIKE ? AND u.email LIKE ?
+");
+$count_stmt->execute(["%$filtre_nom%", "%$filtre_prenom%", "%$filtre_email%"]);
+$nb_enseignants = (int)$count_stmt->fetchColumn();
+$total_pages    = max(1, (int)ceil($nb_enseignants / $par_page));
+$page           = min($page, $total_pages);
+$offset         = ($page - 1) * $par_page;
 
 $stmt = $pdo->prepare("
     SELECT i.id, u.last_name, u.first_name, u.email,
@@ -48,11 +63,16 @@ $stmt = $pdo->prepare("
     WHERE u.last_name LIKE ? AND u.first_name LIKE ? AND u.email LIKE ?
     GROUP BY i.id, u.last_name, u.first_name, u.email
     ORDER BY u.last_name ASC
+    LIMIT ? OFFSET ?
 ");
-$stmt->execute(["%$filtre_nom%", "%$filtre_prenom%", "%$filtre_email%"]);
+$stmt->bindValue(1, "%$filtre_nom%");
+$stmt->bindValue(2, "%$filtre_prenom%");
+$stmt->bindValue(3, "%$filtre_email%");
+$stmt->bindValue(4, $par_page, PDO::PARAM_INT);
+$stmt->bindValue(5, $offset, PDO::PARAM_INT);
+$stmt->execute();
 
-$enseignants    = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$nb_enseignants = count($enseignants);
+$enseignants = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Modules disponibles pour la modale
 $stmt        = $pdo->query("SELECT id, name FROM module ORDER BY name ASC");
