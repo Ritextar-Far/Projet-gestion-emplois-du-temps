@@ -332,3 +332,31 @@ dialog::backdrop {
     transition: background 0.2s;
 }
 .bouton-enregistrer-modal:hover { background: #1e2f52; }
+
+.pagination {
+    display: flex;
+    gap: 6px;
+    margin-top: 24px;
+    justify-content: center;
+}
+.pagination-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    font-size: 13px;
+    text-decoration: none;
+    color: #2c416e;
+    background: white;
+    border: 1px solid #dce0ea;
+    transition: background 0.15s;
+}
+.pagination-item:hover { background: #f0f2f7; }
+.pagination-item.active {
+    background: #2c416e;
+    color: white;
+    border-color: #2c416e;
+    font-weight: 600;
+}
