@@ -40,7 +40,7 @@ require_once '../database/requetecorpsenseignant.php';
 
         <section class="bloc-filtre">
             <h3 class="titre-filtre">Filtres</h3>
-            <form class="formulaire-filtre" method="POST" action="">
+            <form class="formulaire-filtre" method="GET" action="">
                 <div class="champ">
                     <label>Nom de famille</label>
                     <input type="text" name="nom" placeholder="Saisissez le nom de famille"
@@ -96,6 +96,16 @@ require_once '../database/requetecorpsenseignant.php';
             <?php endif; ?>
             </tbody>
         </table>
+
+        <?php if ($total_pages > 1): ?>
+            <div class="pagination">
+                <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                    <a href="?nom=<?= urlencode($filtre_nom) ?>&prenom=<?= urlencode($filtre_prenom) ?>&email=<?= urlencode($filtre_email) ?>&page=<?= $i ?>" class="pagination-item <?= $i === $page ? 'active' : '' ?>">
+                        <?= $i ?>
+                    </a>
+                <?php endfor; ?>
+            </div>
+        <?php endif; ?>
     </main>
 </div>
 
