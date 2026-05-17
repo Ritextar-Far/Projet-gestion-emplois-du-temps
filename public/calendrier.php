@@ -38,6 +38,7 @@ require_once '../database/requetecalendrier.php';
             <div class="alerte-erreur">⚠️ <?= htmlspecialchars($erreur_ajout) ?></div>
         <?php endif; ?>
 
+        <p class="sous-titre-tableau">Interventions de la semaine</p>
         <table class="table">
             <thead>
             <tr>
@@ -72,6 +73,16 @@ require_once '../database/requetecalendrier.php';
             <?php endforeach; ?>
             </tbody>
         </table>
+
+        <?php if ($total_pages > 1): ?>
+            <div class="pagination">
+                <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                    <a href="?page=<?= $i ?>" class="pagination-item <?= $i === $page ? 'active' : '' ?>">
+                        <?= $i ?>
+                    </a>
+                <?php endfor; ?>
+            </div>
+        <?php endif; ?>
     </main>
 </div>
 
