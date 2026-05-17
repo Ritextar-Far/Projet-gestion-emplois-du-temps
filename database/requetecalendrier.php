@@ -41,7 +41,16 @@ if (isset($_POST['action']) && $_POST['action'] === 'ajouter') {
     }
 }
 
-$stmt = $pdo->query("
+$page     = max(1, (int)($_GET['page'] ?? 1));
+$par_page = 10;
+
+$count_stmt  = $pdo->query("SELECT COUNT(*) FROM course");
+$total       = (int)$count_stmt->fetchColumn();
+$total_pages = max(1, (int)ceil($total / $par_page));
+$page        = min($page, $total_pages);
+$offset      = ($page - 1) * $par_page;
+
+$stmt = $pdo->prepare("
     SELECT
         c.id,
         CONCAT(
@@ -69,7 +78,11 @@ $stmt = $pdo->query("
     LEFT JOIN users u               ON ins.user_id            = u.id
     GROUP BY c.id, c.start_date, c.end_date, m.name, c.title, it.name, c.remotely
     ORDER BY c.start_date ASC
+    LIMIT ? OFFSET ?
 ");
+$stmt->bindValue(1, $par_page, PDO::PARAM_INT);
+$stmt->bindValue(2, $offset, PDO::PARAM_INT);
+$stmt->execute();
 $types = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $stmt = $pdo->query("SELECT id, name FROM module ORDER BY name ASC");
