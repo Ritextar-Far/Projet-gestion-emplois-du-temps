@@ -17,14 +17,21 @@ if (isset($_POST['action']) && $_POST['action'] === 'ajouter') {
 }
 
 // Filtre
-$filtre_nom = isset($_POST['nom']) ? trim($_POST['nom']) : '';
+$filtre_nom = isset($_GET['nom']) ? trim($_GET['nom']) : '';
 
-if ($filtre_nom !== '') {
-    $stmt = $pdo->prepare("SELECT * FROM intervention_type WHERE name LIKE ? ORDER BY name ASC");
-    $stmt->execute(['%' . $filtre_nom . '%']);
-} else {
-    $stmt = $pdo->query("SELECT * FROM intervention_type ORDER BY name ASC");
-}
+$page     = max(1, (int)($_GET['page'] ?? 1));
+$par_page = 10;
 
-$types    = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$nb_types = count($types);
+$count_stmt = $pdo->prepare("SELECT COUNT(*) FROM intervention_type WHERE name LIKE ?");
+$count_stmt->execute(['%' . $filtre_nom . '%']);
+$nb_types    = (int)$count_stmt->fetchColumn();
+$total_pages = max(1, (int)ceil($nb_types / $par_page));
+$page        = min($page, $total_pages);
+$offset      = ($page - 1) * $par_page;
+
+$stmt = $pdo->prepare("SELECT * FROM intervention_type WHERE name LIKE ? ORDER BY name ASC LIMIT ? OFFSET ?");
+$stmt->bindValue(1, '%' . $filtre_nom . '%');
+$stmt->bindValue(2, $par_page, PDO::PARAM_INT);
+$stmt->bindValue(3, $offset, PDO::PARAM_INT);
+$stmt->execute();
+$types = $stmt->fetchAll(PDO::FETCH_ASSOC);
